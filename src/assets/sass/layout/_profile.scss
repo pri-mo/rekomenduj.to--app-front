@@ -37,6 +37,10 @@ $button-size: 3 * 1.36rem;
   width: $pic-size;
   z-index: 1;
 
+  @include respond-to('tablet') {
+    width: $pic-size / 1.36;
+  }
+
   &::before {
     content: '';
     display: block;
@@ -88,11 +92,6 @@ $button-size: 3 * 1.36rem;
 .profile__focus-box {
   margin-top: -10rem;
   padding: 0;
-
-  // TODO delete after html update
-  & + & {
-    margin-top: 1rem;
-  }
 
   > div {
     margin-top: 1rem;
