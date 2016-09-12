@@ -214,7 +214,7 @@
 
           <section class="layout--card roll-out roll-out__container">
             <a href="" class="roll-out__trigger">
-              <span class="roll-out__icon" data-icon="g"></span><span class="roll-out__name">Zmień hasło</span><span class="roll-out__status" data-icon="e"></span>
+              <span class="roll-out__icon" data-icon="g"></span><span class="roll-out__name">Nowe hasło</span><span class="roll-out__status" data-icon="e"></span>
             </a>
 
             <div class="roll-out__content">
