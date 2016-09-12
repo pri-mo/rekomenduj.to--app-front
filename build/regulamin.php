@@ -48,7 +48,7 @@ $randomImage = $faker->numberBetween($min = 900, $max = 1000);
                 </li>
             </ol>
 
-        <h2 class="counter">Zasady rejestracji i uczestnictwa w serwisie  www.rekomenduj.to</h2>
+        <h2>Zasady rejestracji i uczestnictwa w serwisie  www.rekomenduj.to</h2>
             <ol>
                 <li>Użytkownikiem serwisu Rekomenduj.to może zostać:
                   <ol>
