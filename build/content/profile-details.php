@@ -213,7 +213,43 @@
           </section>
 
           <section class="layout--card roll-out roll-out__container">
-            <a href="" class="roll-out__trigger social-reach__add">
+            <a href="" class="roll-out__trigger">
+              <span class="roll-out__icon" data-icon="g"></span><span class="roll-out__name">Zmień hasło</span><span class="roll-out__status" data-icon="e"></span>
+            </a>
+
+            <div class="roll-out__content">
+              <div class="input input--password">
+                <input tabindex name="pass" type="password" id="password" required autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="np. thanks 4 all the fish">
+                <label for="password"
+                data-focused="Nowe hasło"
+                data-original="Podaj nowe hasło">Podaj nowe hasło</label>
+
+                <div class="input__show-password" id="showPass"></div>
+              </div>
+
+              <div class="input">
+                <input tabindex
+                name="user-lastname" id="user-lastname" type="password"
+                autocomplete="family-name"
+                required
+                spellcheck="true"
+                placeholder="Podaj hasło ponownie">
+                <label for="user-lastname"
+                data-focused="{{zwrotka_poprawności}}"
+                data-original="Podaj hasło ponownie"
+                data-invalid="To pole jest wymagane">Podaj hasło ponownie</label>
+              </div>
+
+              <div class="layout__button-bar flow--right">
+                <button class="button--secondary" type="button" name="button">Anuluj</button>
+                <button class="button--cta" type="button" name="button">Zapisz</button>
+              </div>
+
+            </div>
+          </section>
+
+          <section class="layout--card roll-out roll-out__container">
+            <a href="" class="roll-out__trigger">
               <span class="roll-out__icon" data-icon="i"></span><span class="roll-out__name">Mój adres dostawy</span><span class="roll-out__status" data-icon="e"></span>
             </a>
             <div class="roll-out__content">
@@ -287,7 +323,7 @@
           </section>
 
           <section class="layout--card roll-out roll-out__container">
-            <a href="" class="roll-out__trigger social-reach__add">
+            <a href="" class="roll-out__trigger">
               <span class="roll-out__icon" data-icon="p"></span><span class="roll-out__name">Jestem blogerem</span><span class="roll-out__status" data-icon="e"></span>
             </a>
             <div class="roll-out__content">
@@ -341,7 +377,7 @@
           </section>
 
           <section class="layout--card roll-out roll-out__container">
-            <a href="" class="roll-out__trigger social-reach__add">
+            <a href="" class="roll-out__trigger">
               <span class="roll-out__icon" data-icon="3"></span><span class="roll-out__name">Więcej o mnie...</span><span class="roll-out__status" data-icon="e"></span>
             </a>
             <div class="roll-out__content">
