@@ -4,8 +4,18 @@
 
 .cover__container {
   overflow: hidden;
-  background-color: $black !important;
+  background-color: $black;
   color: $white;
+
+  @include on-event {
+    background-color: $black;
+  }
+
+  * {
+    position: relative;
+    display: block;
+    color: $white;
+  }
 
   &.profile__pic-container {
     background-color: transparent !important;
@@ -19,6 +29,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
+
+  @include when-inside('.device--no-touch a.cover__container:hover') {
+    @include transform($move-to-center scale(1.25));
+  }
 
   &.cover--width { height: auto; width: 100%; }
   &.cover--height { height: 100%; width: auto; }

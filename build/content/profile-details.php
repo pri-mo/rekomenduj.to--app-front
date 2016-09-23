@@ -224,7 +224,7 @@
                 data-focused="Nowe hasło"
                 data-original="Podaj nowe hasło">Podaj nowe hasło</label>
 
-                <div class="input__show-password" id="showPass"></div>
+                <div class="input__show-password" id="showPass" data-label-show="Pokaż hasło" data-label-hide="Ukryj hasło"></div>
               </div>
 
               <div class="input">

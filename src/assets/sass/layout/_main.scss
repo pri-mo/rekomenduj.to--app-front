@@ -2,15 +2,14 @@
 // Main content section styles (mainly for homepage and desktop layout)
 // ---------------------------------------------------------------------
 
-body {
+.device--desktop {
+  .page__wrapper {
+    @include clearfix;
+    position: relative;
+  }
 
-  &.device--desktop {
+  &.scope--inside {
     padding: 0 1rem 10rem;
-
-    .page__wrapper {
-      @include clearfix;
-      position: relative;
-    }
 
     main,
     header {
@@ -41,6 +40,18 @@ body {
       }
     }
 
+    main {
+      @include respond-to('tablet') {
+        @include grid--cell-width('8');
+        @include grid--cell-push('1');
+      }
+
+      @include respond-to('desktop') {
+        @include grid--cell-width('8');
+        @include grid--cell-push('1');
+      }
+    }
+
     .nav--primary {
       @include transform(none);
       position: absolute;
@@ -62,28 +73,189 @@ body {
     .nav__menu-trigger {
       display: none;
     }
+  }
+}
 
-    main {
+.scope--outside {
+  .page__wrapper {
+    @include display(flex);
+    @include flex-direction(column);
+  }
+
+  main {
+    @include flex(1);
+    padding-bottom: 3rem;
+  }
+
+  .header {
+    padding: 0;
+    height: auto;
+
+    @include respond-to('tablet') {
+      height: 64vh;
+    }
+
+    .header__container {
+      @include size(100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header__background {
+      @include size(100%);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+
+      &:not(.cover__container) {
+        background: $brand-color image('reko-pattern.png') fixed center center no-repeat;
+        background-size: cover;
+      }
+    }
+
+    .header__content {
+      padding: 3rem;
+      color: $white;
+      text-shadow: $shadow-2;
 
       @include respond-to('tablet') {
-        @include grid--cell-width('8');
-        @include grid--cell-push('1');
-      }
+        @include transform(translate(-50%, -50%));
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
 
-      @include respond-to('desktop') {
-        @include grid--cell-width('8');
-        @include grid--cell-push('1');
+        h1 {font-size: $ico-size-m;}
+        h2 {font-size: $ico-size-m;}
+        h3 {font-size: $ico-size-s;}
       }
+    }
 
-      // &::before {
-      //   @include grid--cell-width('4');
-      //   height: 100vh;
-      //   display: block;
-      //   content: '';
-      //   float: left;
-      //   z-index: -1;
-      // }
+    .header__buttons {
+      text-align: center;
+      margin-top: 4rem;
+
+      .button {
+        margin-bottom: 1rem;
+      }
     }
   }
 
+}
+
+/// Components
+/// NOTE Not sure... maybe needs it's own file
+
+.comp__feature {
+  padding: 4rem 1rem !important;
+
+  h2,
+  p { text-align: center; }
+
+  h2 {
+    color: $brand-color-darker;
+  }
+
+  p {
+    margin: 1rem 0;
+
+    &::before,
+    &::after {
+      @include size(3rem 1px);
+      background-color: $text-color-faded;
+      content: '';
+      display: block;
+      margin: 1rem auto;
+      opacity: .3;
+    }
+  }
+
+  [class^='rg-'],
+  [class*=' rg-'],
+  [data-icon] {
+    color: $text-color-faded;
+  }
+}
+
+.comp__hero-link {
+  display: block;
+  width: 100%;
+  height: 50vw;
+  background-color: $brand-color;
+  color: $white;
+
+  @include on-event {
+    color: $white;
+    background-color: $brand-color-darker;
+
+    &.tint-cover.cover__container {
+      background-color: $brand-color-darker;
+    }
+  }
+
+  @include respond-to('phone-long') {
+    height: 20vw;
+  }
+
+  &.tint-cover {
+    &.cover__container {
+      background-color: $brand-color-darker;
+    }
+
+    .image--cover {
+      @include filter(grayscale(100%));
+      opacity: .36;
+    }
+  }
+
+  .image--cover {
+    opacity: .64;
+  }
+
+  .text--cta {
+    font-size: $header-1;
+    line-height: 1.3;
+    font-weight: $bold;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+
+.comp__stat {
+  padding: 4rem .5rem;
+  margin-top: 5rem;
+
+  [class^='stat__content--'],
+  [class*=' stat__content--'] {
+    text-align: left;
+  }
+
+  .stat__content--num {
+    @include size(15vw);
+    display: block;
+    font-size: $ico-size-l;
+    font-weight: $heavy;
+    color: $brand-color;
+    border: 1px solid $frame-color;
+    letter-spacing: -.036em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .5rem;
+    line-height: 1;
+  }
+
+  .stat__content--desc {
+    position: relative;
+    top: -2rem;
+    font-size: $header-3;
+    font-weight: $bold;
+  }
 }

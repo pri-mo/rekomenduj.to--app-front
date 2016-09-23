@@ -23,6 +23,7 @@ $header-4: 1.15rem !default;
 $light: 200;
 $regular: 400;
 $bold: 600;
+$heavy: 900;
 
 /// icon sizes
 /// @type Length
@@ -30,6 +31,10 @@ $ico-size-s: 1.64rem;
 $ico-size-m: 2.36rem;
 $ico-size-l: 3.36rem;
 $ico-size-xl: 7rem;
+
+/// Nav height
+/// @type Length
+$nav-height: 4rem !default;
 
 /// Basic colors
 /// @type Color
@@ -129,20 +134,39 @@ $move-to-center: translate3d(-50%, -50%, 0) !default;
 $max-width: 1330px !default;
 
 /// Grid widths
-$cell-size: 100% / 12;
+// $column: 8.3928571429%;
+$column: 235 / 2800 * 100%;
+$gutter-size: 100% * .0125 !default;
+$cell-size: $column;
+$cell-size--no-gutter: 100% / 12;
 $grid: (
-  '12': ( 100% ),
-  '11': ( #{$cell-size} * 11 ),
-  '10': ( #{$cell-size} * 10 ),
-  '9': ( #{$cell-size} * 9 ),
-  '8': ( #{$cell-size} * 8 ),
-  '7': ( #{$cell-size} * 7 ),
-  '6': ( #{$cell-size} * 6 ),
-  '5': ( #{$cell-size} * 5 ),
-  '4': ( #{$cell-size} * 4 ),
-  '3': ( #{$cell-size} * 3 ),
-  '2': ( #{$cell-size} * 2 ),
-  '1': ( #{$cell-size} )
+  '12': (100%),
+  '11': ($cell-size * 11 - $gutter-size),
+  '10': ($cell-size * 10 - $gutter-size),
+  '9': ($cell-size * 9 - $gutter-size),
+  '8': ($cell-size * 8 - $gutter-size),
+  '7': ($cell-size * 7 - $gutter-size),
+  '6': ($cell-size * 6 - $gutter-size),
+  '5': ($cell-size * 5 - $gutter-size),
+  '4': ($cell-size * 4 - $gutter-size),
+  '3': ($cell-size * 3 - $gutter-size),
+  '2': ($cell-size * 2 - $gutter-size),
+  '1': ($cell-size - $gutter-size)
+  ) !default;
+
+$grid--no-gutter: (
+  '12': (100%),
+  '11': ($cell-size--no-gutter * 11),
+  '10': ($cell-size--no-gutter * 10),
+  '9': ($cell-size--no-gutter * 9),
+  '8': ($cell-size--no-gutter * 8),
+  '7': ($cell-size--no-gutter * 7),
+  '6': ($cell-size--no-gutter * 6),
+  '5': ($cell-size--no-gutter * 5),
+  '4': ($cell-size--no-gutter * 4),
+  '3': ($cell-size--no-gutter * 3),
+  '2': ($cell-size--no-gutter * 2),
+  '1': ($cell-size--no-gutter)
   ) !default;
 
 /// Breakpoints map
@@ -150,12 +174,13 @@ $grid: (
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 /// @see {mixin} respond-to
 $breakpoints: (
+  'only-small': (max-width: 410px),
   'phone-tall': (min-width: 360px, orientation: portrait),
   'phone-long': (min-width: 360px, orientation: landscape),
   'phablet': (min-width: 410px),
-  'tablet': (min-width: 768px),
+  'tablet': (min-width: 736px),
   'desktop': (min-width: 1024px),
-  'hd': (min-width: 1366px)
+  'hd': (min-width: 1365px)
   ) !default;
 
 /// Relative or absolute URL where all assets are served from

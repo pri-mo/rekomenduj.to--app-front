@@ -16,7 +16,7 @@ function verFile($filename){
 
 function livereload() {
   $isLocal = $_SERVER['SERVER_NAME'];
-  $host = '//'.$_SERVER['SERVER_NAME'].':35729/';
+  $host = '//'.$_SERVER['SERVER_NAME'].':65534/';
 
   if ($isLocal === 'localhost' || $isLocal === 'trepski.local') {?>
     <script src="<?php echo $host ?>livereload.js"></script>

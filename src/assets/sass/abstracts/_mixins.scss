@@ -6,33 +6,60 @@
 /// @author Harry Roberts
 /// @param {Bool} $self [false] - Whether or not to include current selector
 /// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
-@mixin on-event($mobile-safe: true) {
+@mixin on-event($mobile-safe: true, $scope: '.device--no-touch') {
+  $s: unquote($scope);
+
   @if $mobile-safe {
-    body:not(.device--mobile) &:hover,
-    body:not(.device--mobile) &:active {
+    #{$s} &:hover,
+    #{$s} &:active {
       // &:focus {
-      @content;
+        @content;
+      }
+    } @else {
+      &:hover,
+      &:active {
+      // &:focus {
+        @content;
+      }
     }
+  }
+
+/// Grid functions
+@function grid-space($width, $no-gutter: false) {
+  @if ($no-gutter) {
+    @return map-get($grid--no-gutter, $width);
   } @else {
-    &:hover,
-    &:active {
-      // &:focus {
-      @content;
+    @return map-get($grid, $width);
+  }
+}
+
+@mixin grid--cell-width($grid-cells, $no-gutter:false) {
+  @if ($no-gutter) {
+    width: grid-space($grid-cells, $no-gutter);
+  } @else {
+    width: grid-space($grid-cells, $no-gutter);
+    margin-right: $gutter-size;
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
 
-/// Grid functions
-@function grid-space($width) {
-  @return map-get($grid, $width);
+@mixin grid--cell-push($grid-cells, $no-gutter:false) {
+  @if ($grid-cells == 0) {
+    left: 0;
+  } @else {
+    left: grid-space($grid-cells, $no-gutter);
+  }
 }
 
-@mixin grid--cell-width($width) {
-  width: calc(#{grid-space($width)} - .36rem);
-}
-
-@mixin grid--cell-push($grid-cells) {
-  left: calc(#{grid-space($grid-cells)} + .64rem);
+@mixin grid--cell-pull($grid-cells, $no-gutter:false) {
+  @if ($grid-cells == 0) {
+    margin-left: 0;
+  } @else {
+    margin-left: (grid-space($grid-cells, $no-gutter) * -1);
+  }
 }
 
 
@@ -45,7 +72,7 @@
 
 @function warm($color, $percent) {
   $scaled: scale-color($color, $red: $percent, $blue: -$percent);
-  @return scale-color($scaled, $lightness: -( $percent * .25 ) );
+  @return scale-color($scaled, $lightness: -($percent * .25));
 }
 
 
@@ -141,7 +168,7 @@
   //               rgba($color, .0),
   //               rgba(#63E2FF, .22) 77%; // set the faint color highlights
   $color-specs: rgba($color, .64) 11%,
-                rgba($color, .22),
+  rgba($color, .22),
                 rgba($color2, .36) 88%; // set the faint color highlights
 
   $overlay: rgba($color, $alpha), rgba($color, $alpha); // set the brand overlay
