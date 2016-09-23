@@ -2,7 +2,7 @@
 
 $lang = 'pl';
 
-$tagsBodyBasic = 'preload device--mobile'; // platform-ios
+$tagsBodyBasic = 'preload device--mobile scope--inside'; // platform-ios
 
 $tagsNav = '';
 $tagsTemplate = 'template--contentlist template--campaigns';
@@ -35,7 +35,7 @@ $tagsTemplate = 'template--contentlist template--campaigns';
 
       <section>
       <?php
-      $inputName = "";
+      $inputName = "jhgjhgj";
       include("components/elements/answer_longform.php");
       ?>
       </section>
