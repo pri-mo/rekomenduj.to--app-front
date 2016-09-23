@@ -100,6 +100,9 @@
     border: 0;
     font-size: 1.25rem;
     line-height: 2rem;
+    &.diary-label {
+      font-size: 0.88rem;
+    }
   }
 
   //// Text fields
@@ -634,6 +637,10 @@
         position: absolute;
         top: 50%;
         left: 1.5rem;
+        &.diary {
+          font-size: $ico-size-l;
+          left: 0.5rem;
+        }
       }
 
       .file-upload__cta {
@@ -664,6 +671,83 @@
         font-size: .75rem;
         line-height: 1em;
         top: .5rem;
+        left: 0;
+        text-transform: $tt;
+      }
+
+      &:focus,
+      &:valid {
+        @include placeholder {
+          opacity: 1;
+        }
+      }
+    }
+
+    textarea {
+      font-weight: $regular;
+
+      @include placeholder {
+        opacity: $alpha-major;
+      }
+
+
+      + label {
+        font-size: .75rem;
+        line-height: 1em;
+        top: .5rem;
+        left: 0;
+        text-transform: $tt;
+      }
+
+      &:focus,
+      &:valid {
+        @include placeholder {
+          opacity: 1;
+        }
+      }
+    }
+
+    &.input--check {
+      input {
+        font-weight: $regular;
+
+        @include placeholder {
+          opacity: $alpha-major;
+        }
+
+        + label {
+          font-size: .75rem;
+          line-height: 1em;
+          top: .36rem;
+          left: 0;
+          text-transform: $tt;
+        }
+
+        &:focus,
+        &:valid {
+          @include placeholder {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  &.input--show-label-diary {
+    padding-left: 2% !important;
+    input,
+    select {
+      font-weight: $regular;
+
+      @include placeholder {
+        opacity: $alpha-major;
+      }
+
+      + label {
+        position: relative;
+        font-size: .75rem;
+        line-height: 1em;
+        bottom: -0.5rem;
         left: 0;
         text-transform: $tt;
       }

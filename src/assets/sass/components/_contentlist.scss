@@ -345,6 +345,15 @@
         opacity: .88;
       }
     }
+    //tu
+    .list-item__description {
+      color: $text-color;
+      display: block;
+      padding: .64rem 0;
+      border: 1px solid rgba($text-color, .11);
+      border-left: 0;
+      border-right: 0;
+    }
   }
 
   // List type icons
@@ -394,6 +403,18 @@
       border: 1px solid rgba($text-color, .11);
       border-left: 0;
       border-right: 0;
+      &.bottom{
+        border: 1px solid rgba($text-color, .11);
+        border-top: 0 !important;
+        border-left: 0;
+        border-right: 0;
+      }
+      &.top{
+        border: 1px solid rgba($text-color, .11);
+        border-bottom: 0 !important;
+        border-left: 0;
+        border-right: 0;
+      }
     }
   }
 
