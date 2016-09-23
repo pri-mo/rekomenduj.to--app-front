@@ -1,5 +1,135 @@
 // Diary
+.image-label {
+  position:absolute;
+  top:2rem;
+  left:2rem;
+  font-size: 1.36rem;
+  color:white;
+  &::before {
+    content: attr(data-icon);
+  }
+}
+.buttons {
+  background-color: transparent;
+  border: 0;
+}
+.button-diary {
+  font-size: 1rem;
+  font-color: $grey;
+  border: 1px solid;
+  border-color: $frame-color;
+  background-color: $white;
+}
+.my-label-items {
+  position: relative;
+  display:flex;
+  border-bottom: 0.5px solid;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-color: $frame-color;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  &.total {
+    border-bottom: 0;
+    border-top: 0.5px solid;
+    border-color: $frame-color;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+  }
+}
+.my-label-item-inner-total-a {
+  font-size: 0.88rem;
+  &::before {
+    content: attr(data-icon);
+  }
+  &::after {
+    content: attr(data-name);
+    padding-left: 1rem;
+    opacity: .36;
+  }
+}
+.my-label-item-inner-total-b {
+  font-size: 0.88rem;
+  opacity: .36;
+  &::before {
+    content: attr(data-name);
+    padding-left: 1rem;
+  }
+}
+.my-label-item-inner {
+  font-size: 0.88rem;
 
+  &::before {
+    content: attr(data-name);
+    padding-left: 1rem;
+  }
+  &::after {
+    content: attr(data-size);
+    display: block;
+    font-size: .64rem;
+    opacity: .36;
+    padding-left: 1rem;
+  }
+}
+.my-diary-button {
+  content: attr(data-icon);
+  font-size: 0.88rem;
+  opacity: .36;
+}
+.my-diary-button-cta {
+  position: absolute;
+  right: 10%;
+  bottom:8%;
+  font-size: 2.36rem
+}
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.progress {
+  position: relative;
+  border-top: 0.5px solid;
+  border-color: $frame-color;
+}
+.progress-bar {
+  position: absolute;
+  width: 66%;
+  top:0;
+  bottom: 0;
+  left: 0;
+  background-color: #f4c741;
+}
+
+.progress-bar-content {
+  height: 100%;
+  position: absolute;
+  line-height: 6rem
+}
+.progress-bar-val {
+  color: $white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 1.64;
+  padding-left: 0.5rem;
+  &::after {
+    content: attr(data-name);
+    display: block;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.stop {
+  position: absolute;
+  font-size: 2.36rem;
+  right: 3%;
+  bottom: 0.3rem;
+}
 
 .diary-entries {
 
