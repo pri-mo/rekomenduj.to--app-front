@@ -137,7 +137,8 @@
       color: rgba($static, $alpha-minor);
       font-weight: $light;
       position: absolute;
-      white-space: nowrap;
+      // white-space: nowrap;
+      white-space: pre-line;
       padding: 0;
       margin: 0;
       z-index: 1;
