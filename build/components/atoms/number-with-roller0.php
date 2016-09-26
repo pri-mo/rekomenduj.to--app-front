@@ -1,7 +1,7 @@
 
-<div class="input input--number">
+<div class="input input--number <?php echo $c; ?>">
     <input tabindex name="<?php echo $inputName; ?>" id="<?php echo $inputName; ?>" type="number" step="1" min="0" max="" spellcheck="false">
-    <label  class="diary-label" for="<?php echo $inputName; ?>"
+    <label  for="<?php echo $inputName; ?>"
             data-focused="<?php echo $labelFocused; ?>"
             data-original="<?php echo $labelOriginal; ?>"
             data-invalid="<?php echo $labelInvalid; ?>"><?php echo $labelOriginal; ?></label>
