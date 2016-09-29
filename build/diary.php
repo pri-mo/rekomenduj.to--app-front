@@ -32,35 +32,34 @@ $tagsTemplate = 'template--contentlist template--campaigns';
       ?>
 
       <section class="layout--base">
-      <?php
-      $inputName = "input";
-      include("components/elements/answer_longform.php");
-      ?>
+        <?php
+        $inputName = "input";
+        include("components/elements/answer_longform.php");
+        ?>
 
-      <?php
-      $title = "Moi rozmówcy";
-      $questions = ["Liczba moich rozmówców", "Tyle osób, nie słyszało o produkcie"];
-      $questionsOriginals = ["Podaj liczbę rozmówców?", "Ilu, nie znało produktu?"];
-      include("components/elements/diary_block_numbers.php");
-      ?>
+        <?php
+        $title = "Moi rozmówcy";
+        $questions = ["Liczba moich rozmówców", "Tyle osób, nie słyszało o produkcie"];
+        $questionsOriginals = ["Podaj liczbę rozmówców?", "Ilu, nie znało produktu?"];
+        include("components/elements/diary_block_numbers.php");
+        ?>
 
-      <?php
-      $items = [['Próbki:',1], ['Kupony:',5], ['Ulotki:', 10]];
-      $title = "Prezenty dla znajomych:";
-      include("components/elements/diary_dropdown.php");
-      ?>
+        <?php
+        $items = [['Próbki',1], ['Kupony',5], ['Ulotki', 10]];
+        $title = "Prezenty dla znajomych";
+        include("components/elements/diary_dropdown.php");
+        ?>
 
-      <?php
-      $card = 0;
-      include("components/elements/diary_load_image_cards.php");
-      ?>
+        <?php
+        $card = 0;
+        include("components/elements/diary_load_image_cards.php");
+        ?>
 
-      <div class="layout--base buttons flow--right">
+        <div class="layout--base buttons flow--right">
           <button class="button-diary" type="button" name="button">Wyczyść</button>
           <button class="button-diary" type="button" name="button">Zapisz</button>
-      </div>
+        </div>
       </section>
-
 
       <?php
       $headerIcon = 'rg-stack';
@@ -92,8 +91,6 @@ $tagsTemplate = 'template--contentlist template--campaigns';
   </div>
 
   <?php
-  $masonry = true;
-
   include 'components/eof-scripts.php'
   ?>
 </body>
