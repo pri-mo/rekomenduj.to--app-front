@@ -33,67 +33,60 @@ $tagsTemplate = 'template--contentlist template--campaigns';
         ?>
       </section>
 
-      <section>
+      <section class="layout--base">
       <?php
-      $inputName = "jhgjhgj";
+      $inputName = "input";
       include("components/elements/answer_longform.php");
       ?>
-      </section>
 
-      <section>
       <?php
-      $questions = ["Liczba moich rozmówców", "Liczba osób, które nie słyszały o produkcie"];
+      $title = "Moi rozmówcy";
+      $questions = ["Liczba moich rozmówców", "Tyle osób, nie słyszało o produkcie"];
+      $questionsOriginals = ["Podaj liczbę rozmówców?", "Ilu, nie znało produktu?"];
       include("components/elements/diary_block_numbers.php");
       ?>
-      </section>
 
-      <section>
       <?php
       $items = [['Próbki:',1], ['Kupony:',5], ['Ulotki:', 10]];
       $title = "Prezenty dla znajomych:";
       include("components/elements/diary_dropdown.php");
       ?>
-      </section>
 
-      <section>
       <?php
       $card = 0;
       include("components/elements/diary_load_image_cards.php");
       ?>
-      </section>
 
-      <section>
-        <div class="layout--card buttons">
+      <div class="layout--base buttons flow--right">
           <button class="button-diary" type="button" name="button">Wyczyść</button>
           <button class="button-diary" type="button" name="button">Zapisz</button>
-        </div>
+      </div>
       </section>
 
-      <section>
-          <?php
-          $headerIcon = 'rg-stack';
-          $headerTitle = 'Poprzednie wpisy';
-          include("components/elements/diary_header.php");
-          ?>
+
+      <?php
+      $headerIcon = 'rg-stack';
+      $headerTitle = 'Poprzednie wpisy';
+      include("components/elements/diary_header.php");
+      ?>
 
 
-        <section class="content-list diary-entries">
-          <div class="list-item diary-entry">
-            <div class="diary-entry__timestamp">3 sie 2016</div>
-            <div class="diary-entry__content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
-            </div>
-            <a class="diary-entry__more"><span class="rg-more"></span></a>
+      <section class="content-list diary-entries">
+        <div class="list-item diary-entry">
+          <div class="diary-entry__timestamp">3 sie 2016</div>
+          <div class="diary-entry__content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
           </div>
+          <a class="diary-entry__more"><span class="rg-more"></span></a>
+        </div>
 
-          <div class="list-item diary-entry">
-            <div class="diary-entry__timestamp">3 sie 2016</div>
-            <div class="diary-entry__content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
-            </div>
-            <a class="diary-entry__more"><span class="rg-more"></span></a>
+        <div class="list-item diary-entry">
+          <div class="diary-entry__timestamp">3 sie 2016</div>
+          <div class="diary-entry__content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet itaque nulla, neque illo, nesciunt expedita? Consequatur, praesentium quas maxime reprehenderit autem atque, architecto alias velit tempora eos dignissimos, odio adipisci!</p>
           </div>
-        </section>
+          <a class="diary-entry__more"><span class="rg-more"></span></a>
+        </div>
       </section>
     </main>
 

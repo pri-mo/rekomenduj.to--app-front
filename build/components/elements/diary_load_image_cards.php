@@ -1,122 +1,135 @@
 <script>
-var cards = 4;
-var imagesToSend = new Map();
-var numberOfImage = 0;
-var image = '';
+  var cards = 4;
+  var imagesToSend = new Map();
+  var numberOfImage = 0;
 
-function fileSizeSI(size) {
-  var e = (Math.log(size) / Math.log(1e3)) | 0;
-  return +(size / Math.pow(1e3, e)).toFixed(2) + ' ' + ('kMGTPEZY'[e - 1] || '') + 'B';
-}
-
-function addImageToList(listID, i, file){
-  $( "#"+listID ).append(createLabel(i, file));
-  $( "#"+listID ).attr( "data-answercount", i);
-}
-
-function newLabel(i, file){
-  var div = document.createElement('div');
-  div.setAttribute("class", "my-label-items");
-  div.setAttribute("id", i);
-  var innerDiv = document.createElement('div');
-  innerDiv.setAttribute("class","my-diary-button");
-  innerDiv.setAttribute("data-icon","b");
-  innerDiv.setAttribute("onclick","removeImage2("+i+")");
-  var label = document.createElement('label');
-  label.setAttribute("class", "my-label-item-inner");
-  label.setAttribute('data-size', fileSizeSI(file.size));
-  label.setAttribute('data-name', file.name);
-  div.appendChild(innerDiv);
-  div.appendChild(label);
-  return div;
-}
-
-function changeCard(prev, next){
-  $("#"+prev).hide(); $("#"+next).show();
-}
-
-function onInputChange(files, card){
-  for(var i = 0; i < files.length; i++){
-    numberOfImage += 1;
-    $ ("#c1-1").before(newLabel(numberOfImage, files[i]))
-    imagesToSend.set(numberOfImage, window.URL.createObjectURL(files[i]));
-    document.querySelector("#image").src = window.URL.createObjectURL(files[i]);
+  function fileSizeSI(size) {
+    var e = (Math.log(size) / Math.log(1e3)) | 0;
+    return +(size / Math.pow(1e3, e)).toFixed(2) + ' ' + ('kMGTPEZY'[e - 1] || '') + 'B';
   }
-  if (files.length > 0 && card == 'c0'){
-    changeCard('c0', 'c1');
+
+  function addListElement(i, file){
+    var div = document.createElement('div');
+    div.setAttribute("class", "diary-media__items");
+    div.setAttribute("id", i);
+    var innerDiv = document.createElement('div');
+    innerDiv.setAttribute("class","diary-media__remove-item");
+    innerDiv.setAttribute("data-icon","b");
+    innerDiv.setAttribute("onclick","removeListElement("+i+")");
+    div.appendChild(innerDiv);
+    var label = document.createElement('label');
+    label.setAttribute("class", "diary-media__file-details");
+    label.setAttribute('data-size', fileSizeSI(file.size));
+    label.setAttribute('data-name', file.name);
+    div.appendChild(label);
+    return div;
   }
-  updateTotalSizeToUpload();
-}
 
-function removeImage2(el){
-  $("div#"+el).remove();
-  imagesToSend.delete(parseInt(el));
-  console.log(imagesToSend);
-  updateTotalSizeToUpload();
-}
-
-function removeImage(el){
-  $("label#"+el).remove();
-  imagesToSend.delete(parseInt(el));
-  console.log(imagesToSend);
-  updateTotalSizeToUpload();
-}
-
-function setTotalSize(){
-  if ($(".my-label-item-inner").length == 0){
-    return 0;
+  function removeListElement(elementId){
+    $("div#"+elementId).remove();
+    imagesToSend.delete(parseInt(elementId));
+    console.log(imagesToSend);
+    updateImagesTotalSize();
   }
-  return $(".my-label-item-inner").map(function () {
-    return parseFloat(/\d*\.\d*/.exec($(this).attr('data-size')))*1000;
-  }).toArray().reduce(function(x, y){
-    return x + y;
-  });
-}
 
-function updateTotalSizeToUpload() {
-  $( "#totalSize" ).attr('data-name', fileSizeSI(setTotalSize()));
-}
+  function removeList(){
+    imagesToSend.forEach(function(val, key, map){
+      removeListElement(key);
+    });
+  }
 
-function openFileExpl(){
-  $(":file").click();
-}
+  function loadImage(files, card){
+    for(var i = 0; i < files.length; i++){
+      numberOfImage += 1;
+      $ ("#summary").before(addListElement(numberOfImage, files[i]))
+      imagesToSend.set(numberOfImage, [
+        window.URL.createObjectURL(files[i]), files[i].size]);
+      document.querySelector("#image").src = window.URL.createObjectURL(files[i]);
+    }
+    if (files.length > 0 && card == 'card_add_images'){
+      changeCard('card_add_images', 'card_list_images');
+    }
+    updateImagesTotalSize();
+  }
 
-function setH(){
-  $( "#c2").css('height', $( "#c1").height());
-}
+  function calculateImagesTotalSize(){
+    var sum = 0;
+    imagesToSend.forEach(function(val, key, map){
+      sum += val[1];
+    });
+    return sum;
+  }
 
+  function updateImagesTotalSize() {
+    $( "#total_size" ).attr('data-size', fileSizeSI(calculateImagesTotalSize()));
+  }
+
+  function setCardProgressHeight(){
+    fakeProgress('70%');
+    $( "#card_upload_progress").css('height', $( "#card_list_images").height());
+  }
+
+  function changeCard(prev, next){
+    $("#"+prev).hide(); $("#"+next).show();
+  }
+
+  function fakeProgress(width) {
+    $ ( 'div#bar' ).css({'width': width});
+  }
 
 </script>
+<div id="card_add_images"
+  class="layout--card input input--file-upload diary-media__upload">
+  <input type="file"
+    name="file" id="file"
+    multiple
+    onchange="loadImage(this.files, 'card_add_images')">
+  <label for="file">
+    <span class="rg-upload file-upload__icon"></span>
+    <span class="file-upload__cta">Dodaj relację ze spotkania. Możesz załadować zdjęcie, plik audio lub video.</span>
+  </label>
+</div>
 
-      <div id="c0" class="layout--card images">
-        <div class="input input--file-upload priority--hashtag__upload">
-          <input type="file" name="file" id="file" multiple onchange="onInputChange(this.files, 'c0')">
-          <label for="file">
-            <span class="file-upload__icon button button--icon button--cta diary" data-icon="k"></span>
-            <span class="file-upload__cta">Dodaj relację ze spotkania. Możesz załadować zdjęcie, plik audio lub video.</span>
-          </label>
-        </div>
-      </div>
+<div id="card_list_images"
+  class="layout--card diary-media__upload-list" style="display: none">
+  <div id="summary"
+    class="diary-media__items total">
+    <div class="input input--file-upload input--button">
+      <input id="file"
+        type="file"
+        name="file"
+        multiple onchange="loadImage(this.files, 'card_list_images')">
+      <label for="file"><span data-icon="e"></span></label>
+    </div>
+    <div id="total_size"
+        class="diary-media__upload-total"
+        data-label="Łącznie: "
+        data-size=""></div>
+  </div>
+  <button id="uploadFiles"
+    class="button--icon button--cta force--cta diary-media__floating-button"
+    data-icon="1"
+    onclick="changeCard('card_list_images','card_upload_progress'); setCardProgressHeight()"></button>
+</div>
 
-      <div id="c1" class="layout--card" style="display: none">
-        <div id="c1-1" class="my-label-items total">
-          <input class="inputfile" type="file" name="file" multiple onchange="onInputChange(this.files, 'c1')">
-          <label for="file" class="my-label-item-inner-total-a" data-name="Łącznie: " data-icon="e"></label>
-          <label id="totalSize" class="my-label-item-inner-total-b" data-name=""></label>
-        </div>
-      <button onclick="changeCard('c1','c2'); setH()" id="uploadFiles" class="button--icon button--cta ripple my-diary-button-cta" data-icon="1"></button>
-      </div>
+<div id="card_upload_progress"
+    class="layout--card diary-media__upload-progress " style="display: none">
+  <div id="bar">
+    <!-- TODO  switch when loading is complete -->
+    <label
+      data-size="21kB"
+      data-total-size="251MB"
+      onclick="changeCard('card_upload_progress','card_show_image')">Ładuję...</label>
+  </div>
+  <button class="diary-media__floating-button button--icon button--cta ripple stop"
+  data-icon="b"
+  onclick="changeCard('card_upload_progress','card_list_images')" ></button>
+</div>
 
-      <div id="c2" class="layout--card progress" style="display:none">
-        <div class="progress-bar">
-          <div class="progress-bar-content"></div>
-          <!-- TODO  onclick in label is only to switch cards, switch when loading is complete -->
-            <label onclick="changeCard('c2','c3')" class="progress-bar-val" data-name="21kB z 251MB">Ładuję...</label>
-          </div>
-        <button onclick="changeCard('c2','c1')" id="stopUpload" class="button--icon button--cta ripple stop" data-icon="b"></button>
-      </div>
-
-      <div id="c3" style="display: none;" class="layout--card">
-          <img id="image" src="image"/>
-          <span onclick="changeCard('c3','c0')"  class="image-label" data-icon="n">WYMIEŃ</span>
-      </div>
+<div id="card_show_image"
+  class="layout--card " style="display: none">
+  <img id="image" src="image"/>
+  <span class="diary-media__label--replace"
+    data-icon="n"
+    onclick="changeCard('card_show_image','card_add_images'); removeList()">WYMIEŃ</span>
+</div>
