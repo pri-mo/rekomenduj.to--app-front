@@ -142,8 +142,8 @@
                 <div class="input__field"></div>
               </div>
 
-              <div class="grid__container grid--gutter">
-                <div class="grid__item grid__item--1of2">
+              <div class="grid__wrapper">
+                <div class="grid__item grid__span--6">
                   <div class="input input--date input--show-label">
                     <input tabindex
                     name="user-birthday" id="user-birthday" type="date" <?php echo 'max="' . date('Y-m-d', strtotime('-14 years')) . '"'; ?>
@@ -158,7 +158,7 @@
                   </div>
                 </div>
 
-                <div class="grid__item grid__item--1of2">
+                <div class="grid__item grid__span--6">
                   <div class="input input--select input--show-label">
                     <select name="user-gender" id="user-gender" required>
                       <option value="" selected disabled>Podaj płeć</option>
@@ -249,7 +249,7 @@
           </section>
 
           <section class="layout--card roll-out roll-out__container">
-            <a href="" class="roll-out__trigger">
+            <a href="" class="roll-out__trigger social-reach__add">
               <span class="roll-out__icon" data-icon="i"></span><span class="roll-out__name">Mój adres dostawy</span><span class="roll-out__status" data-icon="e"></span>
             </a>
             <div class="roll-out__content">
@@ -263,8 +263,8 @@
                 data-invalid="To pole jest wymagane"></label>
               </div>
 
-              <div class="grid__container grid--gutter">
-                <div class="grid__item grid__item--1of2">
+              <div class="grid__wrapper">
+                <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-house" id="user-addr-house" type="text" autocomplete="address-line2"
                     required
@@ -276,7 +276,7 @@
                   </div>
                 </div>
 
-                <div class="grid__item grid__item--1of2">
+                <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-flat" id="user-addr-flat" type="text" autocomplete="address-line2"
                     spellcheck="false" placeholder="...">
@@ -288,8 +288,8 @@
                 </div>
               </div>
 
-              <div class="grid__container grid--gutter">
-                <div class="grid__item grid__item--1of2">
+              <div class="grid__wrapper">
+                <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-zip" id="user-addr-zip" type="text" autocomplete="postal-code"
                     required pattern="[0-9]{2} [0-9]{3}|[0-9]{2}-[0-9]{3}"
@@ -301,7 +301,7 @@
                   </div>
                 </div>
 
-                <div class="grid__item grid__item--1of2">
+                <div class="grid__item grid__span--6">
                   <div class="input">
                     <input tabindex name="user-addr-city" id="user-addr-city" type="text" autocomplete="address-level2"
                     required
@@ -323,7 +323,7 @@
           </section>
 
           <section class="layout--card roll-out roll-out__container">
-            <a href="" class="roll-out__trigger">
+            <a href="" class="roll-out__trigger social-reach__add">
               <span class="roll-out__icon" data-icon="p"></span><span class="roll-out__name">Jestem blogerem</span><span class="roll-out__status" data-icon="e"></span>
             </a>
             <div class="roll-out__content">
@@ -377,7 +377,7 @@
           </section>
 
           <section class="layout--card roll-out roll-out__container">
-            <a href="" class="roll-out__trigger">
+            <a href="" class="roll-out__trigger social-reach__add">
               <span class="roll-out__icon" data-icon="3"></span><span class="roll-out__name">Więcej o mnie...</span><span class="roll-out__status" data-icon="e"></span>
             </a>
             <div class="roll-out__content">
