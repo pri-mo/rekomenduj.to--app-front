@@ -25,13 +25,11 @@ $tagsTemplate = 'template--contentlist template--campaigns';
 
     <main>
 
-      <section>
-        <?php
-        $headerIcon = 'rg-diary';
-        $headerTitle = 'Pamiętnik kampanii';
-        include("components/elements/diary_header.php");
-        ?>
-      </section>
+      <?php
+      $headerIcon = 'rg-diary';
+      $headerTitle = 'Pamiętnik kampanii';
+      include("components/elements/diary_header.php");
+      ?>
 
       <section class="layout--base">
       <?php
