@@ -1,5 +1,5 @@
 // Diary
-.diary-media__label--replace{
+.image-label {
   position: absolute;
   top: 2rem;
   left: 2rem;
@@ -103,6 +103,15 @@
   }
 }
 
+.inputfile {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
 .input.diary-media__upload {
   label {
     padding-top: 1rem;
@@ -128,29 +137,35 @@
   position: relative;
   border-top: 1px solid $frame-color;
   max-height: 64vw;
+}
 
-  > div {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #f4c741;
+.progress-bar {
+  position: absolute;
+  width: 66%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #f4c741;
+}
 
-    > label {
-      color: $white;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      font-size: 1.64;
-      padding-left: .5rem;
+.progress-bar-content {
+  height: 100%;
+  position: absolute;
+  line-height: 6rem;
+}
 
-      &::after {
-        content: attr(data-size) ' z ' attr(data-total-size);
-        display: block;
-        padding-bottom: .5rem;
-      }
-    }
+.progress-bar-val {
+  color: $white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 1.64;
+  padding-left: .5rem;
 
+  &::after {
+    content: attr(data-name);
+    display: block;
+    padding-bottom: .5rem;
   }
 }
 
